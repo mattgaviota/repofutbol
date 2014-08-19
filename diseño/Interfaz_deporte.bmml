@@ -231,5 +231,10 @@
         <text>Mapa</text>
       </controlProperties>
     </control>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::Icon" x="1202" y="202" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="49" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ShareIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
