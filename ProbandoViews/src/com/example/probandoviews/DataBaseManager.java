@@ -26,6 +26,7 @@ public class DataBaseManager {
 	public static final String COM_NAME = "Complejo_nombre";
 	public static final String COM_TEL = "Complejo_telefono";
 	public static final String COM_DIR = "Complejo_direccion";
+	public static final String COM_FAV = "Complejo_favorito";
 	
 	
 	public static final String CREATE_COMPLEJO = "create table " + TABLE_COMPLEJO + " ("
@@ -35,10 +36,10 @@ public class DataBaseManager {
 			+ COM_DIR + " text );";
 	
 	
-	private DbHelper helper;
-	private SQLiteDatabase db;
 	
+	private SQLiteDatabase db;	
 	private DataBaseHelper helper2;
+	
 
 	public DataBaseManager(Context context){
 		// helper = new DbHelper(context);
@@ -78,7 +79,7 @@ public class DataBaseManager {
 	}
 	
 	public Cursor CargarCursorComplejos(){
-		String[] columnas = new String[] {COM_ID, COM_NAME, COM_TEL, COM_DIR};
+		String[] columnas = new String[] {COM_ID, COM_NAME, COM_TEL, COM_DIR, COM_FAV};
 		return db.query(TABLE_COMPLEJO, columnas, null, null, null, null, null);
 	}
 	

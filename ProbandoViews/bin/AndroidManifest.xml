@@ -26,6 +26,10 @@
             android:name=".ComplejosActivity"
             android:label="@string/title_activity_complejos" >
         </activity>
+        <activity
+            android:name=".AgregarComplejoActivity"
+            android:label="@string/title_activity_agregar_complejo" >
+        </activity>
     </application>
 
 </manifest>

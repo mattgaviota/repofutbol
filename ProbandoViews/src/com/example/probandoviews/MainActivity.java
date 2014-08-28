@@ -64,7 +64,8 @@ public class MainActivity extends ActionBarActivity {
                         getActionBar().setSelectedNavigationItem(position);
                     }
                 });
-	    
+        
+    
 	    
 	    // Create a tab listener that is called when the user changes tabs.
 	    ActionBar.TabListener tabListener = new ActionBar.TabListener() {
@@ -98,6 +99,9 @@ public class MainActivity extends ActionBarActivity {
                         .setText("CONFIGURACIONES")
                         .setTabListener(tabListener));
 	}
+	
+  
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,6 +118,12 @@ public class MainActivity extends ActionBarActivity {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
+		}
+		
+		if (id == R.id.add_complejo) {
+			Intent i  = new Intent(this,AgregarComplejoActivity.class);
+			startActivity(i);
+			
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -176,12 +186,11 @@ public class MainActivity extends ActionBarActivity {
 	        	View v = inflater.inflate(R.layout.complejos_list, container, false);	
 	    		ListView lv = (ListView) v.findViewById(android.R.id.list);
 	  
-	    		String[] from = new String[] {manager.COM_NAME, manager.COM_TEL, manager.COM_DIR}; 
-	    		int[] to = new int[] {R.id.tvComplejoNombre, R.id.tvComplejoTel, R.id.tvComplejoDir};
+	    		String[] from = new String[] {manager.COM_NAME, manager.COM_TEL, manager.COM_DIR, manager.COM_FAV}; 
+	    		int[] to = new int[] {R.id.tvComplejoNombre, R.id.tvComplejoTel, R.id.tvComplejoDir, R.id.imageView1};
 
 	    		cComplejo = manager.CargarCursorComplejos();
 	    		
-    		
 	    		cursorAdapter = new SimpleCursorAdapter(container.getContext(), R.layout.row_complejos_list, cComplejo, from, to,0);
 	    		
 	    		lv.setAdapter(cursorAdapter);
@@ -189,7 +198,9 @@ public class MainActivity extends ActionBarActivity {
 	    		
 	    		return v;
 	        }
-
+	        
+	        //TODO onResume
+	        
 	        @Override
 	        public void onActivityCreated(Bundle savedInstanceState) {
 	            super.onActivityCreated(savedInstanceState);
@@ -199,9 +210,15 @@ public class MainActivity extends ActionBarActivity {
 	        @Override
 	        public void onListItemClick(ListView l, View v, int position, long id) {
 	        	Intent i = new Intent(l.getContext(), ComplejosActivity.class);
-	        	TextView tv = (TextView) v.findViewById(R.id.tvComplejoNombre);
+	        	TextView tvNombre = (TextView) v.findViewById(R.id.tvComplejoNombre);
+	        	TextView tvTelefono = (TextView) v.findViewById(R.id.tvComplejoTel);
+	        	TextView tvDireccion = (TextView) v.findViewById(R.id.tvComplejoDir);
 	        	
-	        	i.putExtra("COMPLEJO_NOMBRE", tv.getText().toString());
+	        	
+	        	i.putExtra("COMPLEJO_NOMBRE", tvNombre.getText().toString());
+	        	i.putExtra("COMPLEJO_TELEFONO", tvTelefono.getText().toString());
+	        	i.putExtra("COMPLEJO_DIRECCION", tvDireccion.getText().toString());
+	        	
 	        	startActivity(i);
 	        }
 	    }

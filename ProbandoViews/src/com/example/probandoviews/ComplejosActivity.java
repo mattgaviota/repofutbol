@@ -14,8 +14,16 @@ public class ComplejosActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_complejos);
 		
 		TextView tv = (TextView) findViewById(R.id.tvMostrarNombre);
+		TextView tv2 = (TextView) findViewById(R.id.tvMostrarTel);
+		TextView tv3 = (TextView) findViewById(R.id.tvMostrarDir);
+		
 		Bundle bundle = getIntent().getExtras();
+		
         tv.setText(bundle.getString("COMPLEJO_NOMBRE"));
+        tv2.setText(bundle.getString("COMPLEJO_TELEFONO"));
+        tv3.setText(bundle.getString("COMPLEJO_DIRECCION"));
+        
+        
 	}
 
 	@Override
